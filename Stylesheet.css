@@ -35,7 +35,6 @@ h1 {
 	display:flex;
 	align-items:center;
 	justify-content: center;
-	overflow:hidden;
 	position: relative;
 }
 
@@ -90,6 +89,7 @@ h1 {
 .container .one{
 	background-color: #f9e501;
 	left:50%;
+	color: #272929;
 }
 .container .two{
 	background-color: #272929;

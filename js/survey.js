@@ -7,7 +7,14 @@ var current_fs, next_fs, previous_fs; //fieldsets
 var left, opacity, scale; //fieldset properties which we will animate
 var animating; //flag to prevent quick multi-click glitches
 const wheel = document.querySelector('.container');
+const conTwo = document.querySelector('.two');
+const conThree = document.querySelector('.three');
+const conFour = document.querySelector('.four');
+const conFive = document.querySelector('.five');
+var checkConFive = new Boolean(false);
+
 let currentDegree = 0;
+
 
 
 $(".next").click(function(){
@@ -27,12 +34,37 @@ $(".next").click(function(){
 	next_fs.show(); 
 
 	
-	currentDegree = currentDegree - 72;
-	wheel.style.transform = 'rotate('+currentDegree+'deg)';
+
+
+	if (currentDegree == -288) {
+
+	} else {
+		currentDegree = currentDegree - 72;
+		wheel.style.transform = 'rotate('+currentDegree+'deg)';
+		console.log(currentDegree);
+	}
+
+	if(currentDegree == -72) {
+		$(".dayimg").attr('src', 'icons/day.png');
+		conTwo.style.color = '#272929';
+		conTwo.style.backgroundColor = '#f9e501';
+	} else if (currentDegree == -144) {
+		$(".timeimg").attr('src', 'icons/time.png');
+		conThree.style.color = '#272929';
+		conThree.style.backgroundColor = '#f9e501';
+	} else if (currentDegree == -216) {
+		$(".alcimg").attr('src', 'icons/alc.png');
+		conFour.style.color = '#272929';
+		conFour.style.backgroundColor = '#f9e501';
+	} else if (currentDegree == -288) {
+		$(".verstossimg").attr('src', 'icons/verstoss.png');
+		conFive.style.color = '#272929';
+		conFive.style.backgroundColor = '#f9e501';
+		checkConFive = true;
+	} 
 	
 	
-	
-	
+
 	
 
 	//hide the current fieldset with style
@@ -70,8 +102,33 @@ $(".previous").click(function(){
 	//de-activate current step on progressbar
 	$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
 
+
+	if (currentDegree == -288 && checkConFive) {
+		checkConFive = false;
+	} else {
 	currentDegree = currentDegree + 72;
 	wheel.style.transform = 'rotate('+currentDegree+'deg)';
+	}
+
+
+		if(currentDegree == 0) {
+		$(".dayimg").attr('src', 'icons/dayW.png');
+		conTwo.style.color = '#fff';
+		conTwo.style.backgroundColor = '#272929';
+	} else if (currentDegree == -72) {
+		$(".timeimg").attr('src', 'icons/timeW.png');
+		conThree.style.color = '#fff';
+		conThree.style.backgroundColor = '#272929';
+	} else if (currentDegree == -144) {
+		$(".alcimg").attr('src', 'icons/alcW.png');
+		conFour.style.color = '#fff';
+		conFour.style.backgroundColor = '#272929';
+	} else if (currentDegree == -216) {
+		$(".verstossimg").attr('src', 'icons/verstossW.png');
+		conFive.style.color = '#fff';
+		conFive.style.backgroundColor = '#272929';
+	} 
+	
 	
 	//show the previous fieldset
 	previous_fs.show(); 
