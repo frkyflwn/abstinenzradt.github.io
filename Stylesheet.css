@@ -9,10 +9,159 @@ html {
 
 }
 
+
 body {
-	font-family: montserrat, arial, verdana;
+	font-family: sans-serif;
 }
+
+h1 {
+	text-align: center;
+}
+
+#msform {
+  width: 50%;
+  position: relative;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.mpulogo {
+  height: 50px;
+}
+
+.wheelcontainer {
+	margin-top: 10px;
+	padding:0;
+	display:flex;
+	align-items:center;
+	justify-content: center;
+	overflow:hidden;
+	position: relative;
+}
+
+
+
+.container{
+	width:400px;
+	height:400px;
+	background-color: #ccc;
+	border-radius:50%;
+	border:15px solid #ccc;
+	position: relative;
+	overflow: hidden;
+	transition: 3s;
+	box-sizing:border-box;
+	transform: rotate(0);
+	
+}
+
+.container img {
+	height: 60px;
+	top: 10px;
+	margin-bottom: 15px;
+    position: relative;
+}
+
+.container div{
+	height:50%;
+	width:170px;
+	position: absolute;
+	clip-path: polygon(100% 0 , 50% 100% , 0 0 );
+	transform:translateX(-50%);
+	transform-origin:bottom;
+	text-align:center;
+	/*display:flex;*/
+	align-items: center;
+	justify-content: center;
+	font-size:12px;
+	font-weight:bold;
+	font-family:sans-serif;
+	color:#fff;
+	left:100px;
+	text-transform: uppercase;
+}
+
+
+.container .one:active, .container .two:active, .container .three:active, .container .four:active, .container .five:active {
+	background-color: #f9e501;
+}
+
+
+.container .one{
+	background-color: #f9e501;
+	left:50%;
+}
+.container .two{
+	background-color: #272929;
+	transform: rotate(72deg);
+}
+.container .three{
+	background-color: #272929;
+	transform:rotate(144deg);
+}
+.container .four{
+	background-color: #272929;
+	transform: rotate(216deg);
+}
+.container .five{
+	background-color: #272929;
+	transform: rotate(288deg);
+}
+
+.arrow{
+	position: absolute;
+
+	left: 50%;
+	transform: translateX(-50%);
+	color: #272929;
+	z-index: 100;
+	top: -32px;
+	
+}
+
+.arrow::before{
+	content:"\1F817";
+	font-size:50px;
+}
+
+#spin{
+	position: absolute;
+
+	z-index:10;
+	background-color: #e2e2e2;
+	text-transform: uppercase;
+	border:8px solid #fff;
+	font-weight:bold;
+	font-size:20px;
+	color:#a2a2a2;
+	width: 80px;
+	height:80px;
+	font-family: sans-serif;
+	border-radius:50%;
+	cursor: pointer;
+	outline:none;
+	letter-spacing: 1px;
+}
+
+
+@keyframes rotate {
+	0% {
+		-webkit-transform: rotate(0);
+		transform: rotate(0);
+	}
+	100% {
+    	-webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+	}
+}
+*/
+/* @keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+} / */
+
 /*form styles*/
+
 #msform {
 	width: 400px;
 	margin: 50px auto;
@@ -52,7 +201,7 @@ body {
 /*buttons*/
 #msform .action-button {
 	width: 100px;
-	background: #27AE60;
+	background: #272929;
 	font-weight: bold;
 	color: white;
 	border: 0 none;
@@ -86,7 +235,7 @@ body {
 }
 #progressbar li {
 	list-style-type: none;
-	color: white;
+	color: #272929;
 	text-transform: uppercase;
 	font-size: 9px;
 	width: 20%;
@@ -123,8 +272,8 @@ body {
 /*marking active/completed steps green*/
 /*The number of the step and the connector before it = green*/
 #progressbar li.active:before,  #progressbar li.active:after{
-	background: #27AE60;
-	color: white;
+	background: #f9e501;
+	color: #272929;
 }
 
 

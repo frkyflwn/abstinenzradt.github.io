@@ -6,6 +6,9 @@ Orginal Page: http://thecodeplayer.com/walkthrough/jquery-multi-step-form-with-p
 var current_fs, next_fs, previous_fs; //fieldsets
 var left, opacity, scale; //fieldset properties which we will animate
 var animating; //flag to prevent quick multi-click glitches
+const wheel = document.querySelector('.container');
+let currentDegree = 0;
+
 
 $(".next").click(function(){
 	if(animating) return false;
@@ -13,12 +16,25 @@ $(".next").click(function(){
 	
 	current_fs = $(this).parent();
 	next_fs = $(this).parent().next();
+
+	
+	
 	
 	//activate next step on progressbar using the index of next_fs
 	$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
 	
 	//show the next fieldset
 	next_fs.show(); 
+
+	
+	currentDegree = currentDegree - 72;
+	wheel.style.transform = 'rotate('+currentDegree+'deg)';
+	
+	
+	
+	
+	
+
 	//hide the current fieldset with style
 	current_fs.animate({opacity: 0}, {
 		step: function(now, mx) {
@@ -39,7 +55,9 @@ $(".next").click(function(){
 		}, 
 		//this comes from the custom easing plugin
 		easing: 'easeInOutBack'
+		
 	});
+	
 });
 
 $(".previous").click(function(){
@@ -51,6 +69,9 @@ $(".previous").click(function(){
 	
 	//de-activate current step on progressbar
 	$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+	currentDegree = currentDegree + 72;
+	wheel.style.transform = 'rotate('+currentDegree+'deg)';
 	
 	//show the previous fieldset
 	previous_fs.show(); 
