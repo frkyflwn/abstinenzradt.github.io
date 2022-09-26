@@ -12,10 +12,28 @@ html {
 
 body {
 	font-family: sans-serif;
+	background: url(bg.jpg);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-color: #e9c823;
 }
 
 h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #272929;
+}
+
+.h2title {
 	text-align: center;
+	color: #272929;
+}
+
+.fullLogo {
+  margin: 10px auto 5px auto;
+  height: 90px;
+  display: block;
 }
 
 #msform {
@@ -23,6 +41,7 @@ h1 {
   position: relative;
   text-align: center;
   margin: 0 auto;
+  display: none;
 }
 
 .mpulogo {
@@ -38,14 +57,71 @@ h1 {
 	position: relative;
 }
 
+.startContainer {
+  width: 400px;
+  height: 400px;
+  background-image: url("icons/startbutton-abstinenzratd.png");
+  border-radius: 50%;
+  position: absolute;
+  transition: 3s;
+  box-sizing: border-box;
+  z-index: 2;
+  border: 10px solid #272929;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 400px;
+}
 
+.startButton {
+  color: #272929;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border: none;
+  background: none;
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  width: 350px;
+  height: 350px;
+}
+
+.hideElement {
+transition-delay: 2000ms;
+display:none;
+}
+
+.bounce-out {
+  animation: bounce-out 2s ease;
+  animation-fill-mode: forwards;
+
+}
+@keyframes bounce-out {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.1); }
+  50% {
+    opacity: 1;
+  }
+  
+  100% {
+    opacity: 1;
+	transform: scale(0.17);
+	border: none;
+
+    
+  } 
+}
 
 .container{
 	width:400px;
 	height:400px;
-	background-color: #ccc;
+	background-color: #555;
 	border-radius:50%;
-	border:15px solid #ccc;
+	border:15px solid #555;
 	position: relative;
 	overflow: hidden;
 	transition: 3s;
@@ -75,7 +151,7 @@ h1 {
 	font-size:12px;
 	font-weight:bold;
 	font-family:sans-serif;
-	color:#fff;
+	color: #272929;
 	left:100px;
 	text-transform: uppercase;
 }
@@ -87,9 +163,8 @@ h1 {
 
 
 .container .one{
-	background-color: #f9e501;
+	background-color: #272929;
 	left:50%;
-	color: #272929;
 }
 .container .two{
 	background-color: #272929;
@@ -116,6 +191,7 @@ h1 {
 	color: #272929;
 	z-index: 100;
 	top: -32px;
+	display: none;
 	
 }
 
@@ -124,13 +200,20 @@ h1 {
 	font-size:50px;
 }
 
+.dayimg, .ageimg, .timeimg, .alcimg, .verstossimg {
+		display: none;
+	}
+
+
 #spin{
 	position: absolute;
 
-	z-index:10;
+	
+
+	z-index: 1;
 	background-color: #e2e2e2;
 	text-transform: uppercase;
-	border:8px solid #fff;
+	border:8px solid #272929;
 	font-weight:bold;
 	font-size:20px;
 	color:#a2a2a2;
@@ -174,7 +257,6 @@ h1 {
 	border-radius: 3px;
 	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
 	padding: 20px 30px;
-	
 	box-sizing: border-box;
 	width: 80%;
 	margin: 0 10%;
@@ -241,6 +323,9 @@ h1 {
 	width: 20%;
 	float: left;
 	position: relative;
+}
+#progressbar li span {
+	display: none;
 }
 #progressbar li:before {
 	content: counter(step);

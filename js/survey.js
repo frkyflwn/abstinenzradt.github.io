@@ -6,15 +6,38 @@ Orginal Page: http://thecodeplayer.com/walkthrough/jquery-multi-step-form-with-p
 var current_fs, next_fs, previous_fs; //fieldsets
 var left, opacity, scale; //fieldset properties which we will animate
 var animating; //flag to prevent quick multi-click glitches
+const startContainer = document.querySelector('.startContainer')
 const wheel = document.querySelector('.container');
+const conOne = document.querySelector('.one');
 const conTwo = document.querySelector('.two');
 const conThree = document.querySelector('.three');
 const conFour = document.querySelector('.four');
 const conFive = document.querySelector('.five');
 var checkConFive = new Boolean(false);
+var checkBack = new Boolean(false);
+let checkCounter = 0;
 
-let currentDegree = 0;
+var fieldsetAnimDuration = 0;
 
+let currentDegree = 72;
+let degNew = 72;
+
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+$(".startButton").click(function(){
+
+$(startContainer).addClass("bounce-out");
+$(".startButton").fadeOut(1000);
+$("#msform").fadeIn(2000);
+$(".arrow").fadeIn(2000);
+/* delay(1900).then(() => { $(startContainer).hide(); }); */
+
+
+
+
+});
 
 
 $(".next").click(function(){
@@ -23,64 +46,142 @@ $(".next").click(function(){
 	
 	current_fs = $(this).parent();
 	next_fs = $(this).parent().next();
+	checkTrigger = $(this).parent().attr('class');
 
+	if ( checkTrigger == "triggerClass") {
+
+		console.log(checkTrigger);
+		checkConFive = true;
+	}
+
+	
+ 
+
+	
 	
 	
 	
 	//activate next step on progressbar using the index of next_fs
-	$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+	$("#progressbar li").eq($("fieldset").index(current_fs)).addClass("active");
 	
 	//show the next fieldset
 	next_fs.show(); 
 
-	
 
 
-	if (currentDegree == -288) {
+	if(checkBack == true && checkCounter < 0) {
 
-	} else {
-		currentDegree = currentDegree - 72;
+			checkCounter = checkCounter + 1;
+			fieldsetAnimDuration = 800;
+	 } else if(checkCounter == 0 && checkConFive == false) {
+
+		checkBack = false;
+		currentDegree = currentDegree + 3600 ;
+		fieldsetAnimDuration = 5000;
+
+	}  else if(checkConFive == true) {
+
+		fieldsetAnimDuration = 800;
+
+	} 
+
+
+
+
+	if ( currentDegree == 17712 ) {
+
+	   console.log("hier solls nichts weitergehen"); 
+
+	 } else {
+
+	 		currentDegree = currentDegree - degNew ;
+		
 		wheel.style.transform = 'rotate('+currentDegree+'deg)';
-		console.log(currentDegree);
-	}
 
-	if(currentDegree == -72) {
-		$(".dayimg").attr('src', 'icons/day.png');
-		conTwo.style.color = '#272929';
+	 }
+
+
+	 
+	 console.log(checkCounter);
+
+
+
+	if(currentDegree == 3600) {
+
+	delay(3000).then(() => {
+
+		conOne.style.backgroundColor = '#f9e501';
+		$(".ageimg").fadeIn(2000);
+		$(".listAge").fadeIn(2000);
+
+
+	}); 	
+
+	} else if(currentDegree == 7128) {
+
+		delay(3000).then(() => {
+
 		conTwo.style.backgroundColor = '#f9e501';
-	} else if (currentDegree == -144) {
-		$(".timeimg").attr('src', 'icons/time.png');
-		conThree.style.color = '#272929';
+		$(".dayimg").fadeIn(2000);
+		$(".listDay").fadeIn(2000);
+
+	}); 
+
+	} else if (currentDegree == 10656) {
+
+	delay(3000).then(() => {
+
 		conThree.style.backgroundColor = '#f9e501';
-	} else if (currentDegree == -216) {
-		$(".alcimg").attr('src', 'icons/alc.png');
-		conFour.style.color = '#272929';
+		$(".timeimg").fadeIn(2000);
+		$(".listTime").fadeIn(2000);
+
+	}); 
+	
+	} else if (currentDegree == 14184) {
+
+	delay(3000).then(() => {
+
 		conFour.style.backgroundColor = '#f9e501';
-	} else if (currentDegree == -288) {
-		$(".verstossimg").attr('src', 'icons/verstoss.png');
-		conFive.style.color = '#272929';
+		$(".alcimg").fadeIn(2000);
+		$(".listAlc").fadeIn(2000);
+
+	}); 
+	
+	} else if (currentDegree == 17712) {
+
+		delay(3000).then(() => {
+
 		conFive.style.backgroundColor = '#f9e501';
-		checkConFive = true;
+		$(".verstossimg").fadeIn(2000);
+		$(".listVerstosse").fadeIn(2000);
+
+	}); 
+
 	} 
 	
-	
-
 	
 
 	//hide the current fieldset with style
 	current_fs.animate({opacity: 0}, {
 		step: function(now, mx) {
 			//as the opacity of current_fs reduces to 0 - stored in "now"
+
+			
+				
 			//1. scale current_fs down to 80%
-			scale = 1 - (1 - now) * 0.2;
+		/*	scale = 1 - (1 - now) * 0.2; */
 			//2. bring next_fs from the right(50%)
 			left = (now * 50)+"%";
 			//3. increase opacity of next_fs to 1 as it moves in
 			opacity = 1 - now;
-			current_fs.css({'transform': 'scale('+scale+')'});
+		/*	current_fs.css({'transform': 'scale('+scale+')'}); */
 			next_fs.css({'left': left, 'opacity': opacity});
+			
+				
+
+
 		}, 
-		duration: 800, 
+		duration: fieldsetAnimDuration, 
 		complete: function(){
 			current_fs.hide();
 			animating = false;
@@ -89,6 +190,10 @@ $(".next").click(function(){
 		easing: 'easeInOutBack'
 		
 	});
+
+	
+
+	console.log(currentDegree);
 	
 });
 
@@ -98,16 +203,30 @@ $(".previous").click(function(){
 	
 	current_fs = $(this).parent();
 	previous_fs = $(this).parent().prev();
+
+	if (checkCounter <= 0) {
+
+		checkBack = true;
+
+	} else {
+
+		checkBack = false;
+	}
+	
+
+	checkCounter = checkCounter - 1;
+	console.log(checkCounter);
 	
 	//de-activate current step on progressbar
-	$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+	$("#progressbar li").eq($("fieldset").index(previous_fs)).removeClass("active");
 
 
-	if (currentDegree == -288 && checkConFive) {
+	if (currentDegree == 17712 && checkConFive ==  true) {
 		checkConFive = false;
 	} else {
-	currentDegree = currentDegree + 72;
+	currentDegree = (currentDegree + 72) ;
 	wheel.style.transform = 'rotate('+currentDegree+'deg)';
+	
 	}
 
 
@@ -137,13 +256,13 @@ $(".previous").click(function(){
 		step: function(now, mx) {
 			//as the opacity of current_fs reduces to 0 - stored in "now"
 			//1. scale previous_fs from 80% to 100%
-			scale = 0.8 + (1 - now) * 0.2;
+			scale = 0.8 + (1 - now) * 0.2; 
 			//2. take current_fs to the right(50%) - from 0%
 			left = ((1-now) * 50)+"%";
 			//3. increase opacity of previous_fs to 1 as it moves in
 			opacity = 1 - now;
-			current_fs.css({'left': left});
-			previous_fs.css({'transform': 'scale('+scale+')', 'opacity': opacity});
+			current_fs.css({'left': left}); 
+			previous_fs.css({'transform': 'scale('+scale+')', 'opacity': opacity}); 
 		}, 
 		duration: 800, 
 		complete: function(){
@@ -153,6 +272,10 @@ $(".previous").click(function(){
 		//this comes from the custom easing plugin
 		easing: 'easeInOutBack'
 	});
+
+	console.log(currentDegree);
+
+
 });
 
 $(".submit").click(function(){

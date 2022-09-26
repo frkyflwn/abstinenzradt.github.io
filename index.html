@@ -9,53 +9,71 @@
 </head>
 <body>
 
-
-<br>
-<h1>Jetzt mit dem Abstinenzrad(t) rausfinden, wielange deine Abstinenzdauer ist</h1>
-<br>
-
-
+<img class="fullLogo" src="fulllogo2.png">
+<h1>Willkommen beim Abstinenzrad(t)!</h1>
+<h2 class="h2title">Finde heraus wielange deine Abstinenzdauer ist</h2>
 <br>
 
-<!-- multistep form -->
-<form id="msform">
-	<!-- progressbar -->
-	<ul id="progressbar">
-		   <li class="active">Alter</li>
-		   <li>Wochentag</li>
-		   <li>Uhrzeit</li>
-		   <li>Promille</>
-		   <li>Verstosse</>
-	</ul>
-	
 	<div class="wheelcontainer">
+
+		<div class="startContainer"> 
+	
+	<button class="startButton">Start</button>
+
+	</div>
+
+
+
 	<span class="arrow"></span>
 	<br>
 	<button id="spin"><img class="mpulogo" src="icons/logo.png"></button>
+
+
 	
 
 	<div class="container">
 		<div class="one"><img class="ageimg" src="icons/age.png"><br>Alter</div>
-		<div class="two"><img class="dayimg" src="icons/dayW.png"><br>Wochentag</div>
-		<div class="three"><img class="timeimg" src="icons/timeW.png"><br>Uhrzeit</div>
-		<div class="four"><img class="alcimg" src="icons/alcW.png"><br>Promille</div>
-		<div class="five"><img class="verstossimg" src="icons/verstossW.png"><br>Verstosse</div>
+		<div class="two"><img class="dayimg" src="icons/day.png"><br>Wochentag</div>
+		<div class="three"><img class="timeimg" src="icons/time.png"><br>Uhrzeit</div>
+		<div class="four"><img class="alcimg" src="icons/alc.png"><br>Promille</div>
+		<div class="five"><img class="verstossimg" src="icons/verstoss.png"><br>Verstosse</div>
 	</div>
 
 </div>
 
 <br><br>
+
+
+<!-- multistep form -->
+<form id="msform">
+	<!-- progressbar -->
+	<ul id="progressbar">
+		   <li><span class="listAge">Alter</li>
+		   <li><span class="listDay">Wochentag</span></li>
+		   <li><span class="listTime">Uhrzeit</span></li>
+		   <li><span class="listAlc">Promille</span></li>
+		   <li><span class="listVerstosse">Verstosse</span></li>
+	</ul>
+	
 	<!-- fieldsets -->
+		<fieldset>
+		<h2 class="fs-title">Willkommen!</h2>
+		<h3 class="fs-subtitle">Drücke jetzt auf "Weiter" und beantwortete folgende Fragen um dein Ergebnis zu erfahren</h3>
+		
+<input type="button" name="next" class="next action-button" value="Weiter" />
+	</fieldset>
+
+
 	<fieldset>
 		<h2 class="fs-title">Alter</h2>
-		<h3 class="fs-subtitle">Wie alt warst du, als es zum Vorfall kam</h3>
+		<h3 class="fs-subtitle">Wie alt warst du, als es zum Vorfall kam?</h3>
 		<input type="number" name="age" min="18" max="99" placeholder="Alter">
 <input type="button" name="next" class="next action-button" value="Weiter" />
 	</fieldset>
 
 	<fieldset>
 		<h2 class="fs-title">Wochentag</h2>
-		<h3 class="fs-subtitle">Der Wochentag, an dem es zum Vorfall kam</h3>
+		<h3 class="fs-subtitle">An welchem Wochentag kam es zum Vorfall?</h3>
 		<select placeholder="Wochentag">
   <option value="mo">Montag</option>
   <option value="di">Dienstag</option>
@@ -73,7 +91,7 @@
 
 <fieldset>
 		<h2 class="fs-title">Uhrzeit</h2>
-		<h3 class="fs-subtitle">Die Uhrzeit, als es zum Vorfall kam</h3>
+		<h3 class="fs-subtitle">Um welche Uhrzeit kam es zum Vorfall?</h3>
 		<input type="time" name="time">
   </br>
 		<input type="button" name="previous" class="previous action-button" value="Zurück" />
@@ -82,14 +100,14 @@
 
 <fieldset>
 		<h2 class="fs-title">Alkoholspiegel</h2>
-		<h3 class="fs-subtitle">Wieviel Promille hattest du, als es zum Vorfall kam</h3>
+		<h3 class="fs-subtitle">Wieviel Promille hattest du, als es zum Vorfall kam?</h3>
 		<input type="number" pattern="[0-9]+([\,|\.][0-9]+)?" name="my-num" step="0.01" id="with-step" placeholder="0.00" min="0.00" max="9.99"/>
   </br>
 		<input type="button" name="previous" class="previous action-button" value="Zurück" />
 		<input type="button" name="next" class="next action-button" value="Weiter" />
 	</fieldset>
 
-<fieldset>
+<fieldset class="triggerClass">
 		<h2 class="fs-title">Häufigkeit von Verstossen</h2>
 		<h3 class="fs-subtitle">Wie oft kam es in der Vergangenheit zu Alkoholverstossen?</h3>
 		<input type="number" name="quantityverstosse" min="1" max="99" placeholder="1">
@@ -102,7 +120,7 @@
 
 	<fieldset>
 		<h2 class="fs-title">Fast geschafft!</h2>
-		<h3 class="fs-subtitle">Trage jetzt noch deinen Namen ein und vereinbare im Anschluss dein kostenloses Erstgespräch um dein Erbenbis zu erfahren</h3>
+		<h3 class="fs-subtitle">Trage jetzt noch deinen Namen ein und vereinbare im Anschluss dein kostenloses Erstgespräch um dein Ergebnis zu erfahren</h3>
 		<input type="text" name="surname" placeholder="Vorname" class="name" required />
 		<input type="text" name="lastname" placeholder="Nachname" class="name" required />
 		<input type="button" name="previous" class="previous action-button" value="Zurück" />
@@ -110,7 +128,7 @@
 	</fieldset>
 
 </form>
-
+<br><br>
 
 
 <!-- jQuery -->
