@@ -3,11 +3,14 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=medium-dpi, user-scalable=0" />
 	<link rel="stylesheet" href="Stylesheet.css">
+
 	
     <title></title>
 </head>
 <body>
+
 
 <img class="fullLogo" src="fulllogo2.png">
 <h1>Willkommen beim Abstinenzrad(t)!</h1>
@@ -16,28 +19,41 @@
 
 	<div class="wheelcontainer">
 
+
+	<div class="succesCircle">
+		 <div class="success-animation">
+<svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" /><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" /></svg>
+</div>
+	</div>
+
+
+
+
 		<div class="startContainer"> 
+
+		  <img class="startButtonLogo" src="icons/startlogo.png">
+		  <img class="startButtonThumb" src="icons/thumbsup.png">
+	      <button class="startButton">Start</button>
+
+	     
+	    </div>
+
+
+
+	  <span class="arrow"></span>
+	  <br>
+	  <button id="spin"></button>
+
+
 	
-	<button class="startButton">Start</button>
 
-	</div>
-
-
-
-	<span class="arrow"></span>
-	<br>
-	<button id="spin"><img class="mpulogo" src="icons/logo.png"></button>
-
-
-	
-
-	<div class="container">
-		<div class="one"><img class="ageimg" src="icons/age.png"><br>Alter</div>
-		<div class="two"><img class="dayimg" src="icons/day.png"><br>Wochentag</div>
-		<div class="three"><img class="timeimg" src="icons/time.png"><br>Uhrzeit</div>
-		<div class="four"><img class="alcimg" src="icons/alc.png"><br>Promille</div>
-		<div class="five"><img class="verstossimg" src="icons/verstoss.png"><br>Verstosse</div>
-	</div>
+	   <div class="container">
+		 <div class="one"><img class="ageimg" src="icons/age.png"><br>Alter</div>
+		 <div class="two"><img class="dayimg" src="icons/day.png"><br>Wochentag</div>
+		 <div class="three"><img class="timeimg" src="icons/time.png"><br>Uhrzeit</div>
+		 <div class="four"><img class="alcimg" src="icons/alc.png"><br>Promille</div>
+		 <div class="five"><img class="verstossimg" src="icons/verstoss.png"><br>Verstosse</div>
+	   </div>
 
 </div>
 
@@ -46,6 +62,7 @@
 
 <!-- multistep form -->
 <form id="msform">
+
 	<!-- progressbar -->
 	<ul id="progressbar">
 		   <li><span class="listAge">Alter</li>
@@ -61,6 +78,7 @@
 		<h3 class="fs-subtitle">Drücke jetzt auf "Weiter" und beantwortete folgende Fragen um dein Ergebnis zu erfahren</h3>
 		
 <input type="button" name="next" class="next action-button" value="Weiter" />
+<input type="submit" name="submit" class="submit action-button" value="Abschicken" />
 	</fieldset>
 
 
@@ -74,7 +92,7 @@
 	<fieldset>
 		<h2 class="fs-title">Wochentag</h2>
 		<h3 class="fs-subtitle">An welchem Wochentag kam es zum Vorfall?</h3>
-		<select placeholder="Wochentag">
+		<select name="dayField" placeholder="Wochentag">
   <option value="mo">Montag</option>
   <option value="di">Dienstag</option>
   <option value="mi">Mittwoch</option>
@@ -101,7 +119,7 @@
 <fieldset>
 		<h2 class="fs-title">Alkoholspiegel</h2>
 		<h3 class="fs-subtitle">Wieviel Promille hattest du, als es zum Vorfall kam?</h3>
-		<input type="number" pattern="[0-9]+([\,|\.][0-9]+)?" name="my-num" step="0.01" id="with-step" placeholder="0.00" min="0.00" max="9.99"/>
+		<input type="number" pattern="[0-9]+([\,|\.][0-9]+)?" name="alcField" step="0.01" id="with-step" placeholder="0.00" min="0.00" max="9.99"/>
   </br>
 		<input type="button" name="previous" class="previous action-button" value="Zurück" />
 		<input type="button" name="next" class="next action-button" value="Weiter" />
@@ -135,7 +153,6 @@
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" type="text/javascript"></script>
 <!-- jQuery easing plugin -->
 <script src="js/jqueryeasingmin.js" type="text/javascript"></script>
-
 <script type="text/javascript" src="js/survey.js"></script>
 
 </body>

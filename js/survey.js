@@ -22,6 +22,21 @@ var fieldsetAnimDuration = 0;
 let currentDegree = 72;
 let degNew = 72;
 
+
+
+function successAnim() {
+	$(".startButtonLogo").fadeOut(500);
+		delay(200).then(() => {
+		$(".startButtonThumb").fadeIn(500);
+	}); 	
+	delay(3000).then(() => {
+		$(".startButtonThumb").fadeOut(500);
+		delay(200).then(() => {
+		$(".startButtonLogo").fadeIn(500);
+	}); 	
+	}); 
+};
+
 function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -77,7 +92,8 @@ $(".next").click(function(){
 
 		checkBack = false;
 		currentDegree = currentDegree + 3600 ;
-		fieldsetAnimDuration = 5000;
+		fieldsetAnimDuration = 2000;
+		successAnim();
 
 	}  else if(checkConFive == true) {
 
@@ -278,6 +294,34 @@ $(".previous").click(function(){
 
 });
 
+   const form = document.querySelector("#msform")
+   const submitButton = document.querySelector(".submit")
+   const scriptURL = 'https://script.google.com/macros/s/AKfycbwG9vCMBREFM4suhSiTdVPFu7-F-6JclKyZGGuKjFS-dqaZT6kKXS6r_15kub3YH2R5yw/exec'
+
+   form.addEventListener('submit', e => {
+     submitButton.disabled = true
+     e.preventDefault()
+     let requestBody = new FormData(form)
+     fetch(scriptURL, { method: 'POST', body: requestBody})
+       .then(response => {
+          alert('Success!', response)
+          submitButton.disabled = false
+         })
+       .catch(error => {
+       alert('Error!', error.message)
+         submitButton.disabled = false
+
+       }
+       )
+   })
+
 $(".submit").click(function(){
-	return false;
+
+$('.startContainer').fadeOut();
+$('#spin').fadeOut();
+$('.arrow').fadeOut();
+$('.container').fadeOut();
+$('.succesCircle').fadeIn();
+
+
 })
