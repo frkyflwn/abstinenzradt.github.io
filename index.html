@@ -61,7 +61,7 @@
 
 
 <!-- multistep form -->
-<form id="msform">
+<form action="https://script.google.com/macros/s/AKfycbz0FzRKUKkEBnDE0XyWJyi9vtEPwDp_KWV1qMnJ689N3jBMrsJ_1EIEWZey8nwDiiLGwA/exec" method="POST" id="msform">
 
 	<!-- progressbar -->
 	<ul id="progressbar">
@@ -78,21 +78,20 @@
 		<h3 class="fs-subtitle">Drücke jetzt auf "Weiter" und beantwortete folgende Fragen um dein Ergebnis zu erfahren</h3>
 		
 <input type="button" name="next" class="next action-button" value="Weiter" />
-<input type="submit" name="submit" class="submit action-button" value="Abschicken" />
 	</fieldset>
 
 
 	<fieldset>
 		<h2 class="fs-title">Alter</h2>
 		<h3 class="fs-subtitle">Wie alt warst du, als es zum Vorfall kam?</h3>
-		<input type="number" name="age" min="18" max="99" placeholder="Alter">
+		<input type="number" name="age" min="18" max="99" placeholder="Alter" required>
 <input type="button" name="next" class="next action-button" value="Weiter" />
 	</fieldset>
 
 	<fieldset>
 		<h2 class="fs-title">Wochentag</h2>
 		<h3 class="fs-subtitle">An welchem Wochentag kam es zum Vorfall?</h3>
-		<select name="dayField" placeholder="Wochentag">
+		<select name="dayField" placeholder="Wochentag" required>
   <option value="mo">Montag</option>
   <option value="di">Dienstag</option>
   <option value="mi">Mittwoch</option>
@@ -110,7 +109,7 @@
 <fieldset>
 		<h2 class="fs-title">Uhrzeit</h2>
 		<h3 class="fs-subtitle">Um welche Uhrzeit kam es zum Vorfall?</h3>
-		<input type="time" name="time">
+		<input type="time" name="time" required>
   </br>
 		<input type="button" name="previous" class="previous action-button" value="Zurück" />
 		<input type="button" name="next" class="next action-button" value="Weiter" />
@@ -119,7 +118,7 @@
 <fieldset>
 		<h2 class="fs-title">Alkoholspiegel</h2>
 		<h3 class="fs-subtitle">Wieviel Promille hattest du, als es zum Vorfall kam?</h3>
-		<input type="number" pattern="[0-9]+([\,|\.][0-9]+)?" name="alcField" step="0.01" id="with-step" placeholder="0.00" min="0.00" max="9.99"/>
+		<input type="number" pattern="[0-9]+([\,|\.][0-9]+)?" name="alcField" step="0.01" id="with-step" placeholder="0.00" min="0.00" max="9.99" required/>
   </br>
 		<input type="button" name="previous" class="previous action-button" value="Zurück" />
 		<input type="button" name="next" class="next action-button" value="Weiter" />
@@ -128,7 +127,7 @@
 <fieldset class="triggerClass">
 		<h2 class="fs-title">Häufigkeit von Verstossen</h2>
 		<h3 class="fs-subtitle">Wie oft kam es in der Vergangenheit zu Alkoholverstossen?</h3>
-		<input type="number" name="quantityverstosse" min="1" max="99" placeholder="1">
+		<input type="number" name="quantityverstosse" min="1" max="99" placeholder="1" required>
   </br>
 		<input type="button" name="previous" class="previous action-button" value="Zurück" />
 		<input type="button" name="next" class="next action-button" value="Weiter" />
@@ -154,6 +153,9 @@
 <!-- jQuery easing plugin -->
 <script src="js/jqueryeasingmin.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/survey.js"></script>
+
+
+
 
 </body>
 </html>
