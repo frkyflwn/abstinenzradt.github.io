@@ -22,6 +22,35 @@ var fieldsetAnimDuration = 0;
 let currentDegree = 72;
 let degNew = 72;
 
+ const form = document.querySelector("#msform")
+ const submitButton = document.querySelector(".submit")
+ const scriptURL = 'https://script.google.com/macros/s/AKfycbx4uQtKmcR71QMU93nKvxRK1F3ogulyiaVfoXLWFxyt4lCf6LzYN_p1ivv6S6t9q64r0A/exec'
+
+   form.addEventListener('submit', e => {
+     submitButton.disabled = true
+     e.preventDefault()
+     let requestBody = new FormData(form)
+     fetch(scriptURL, { method: 'POST', body: requestBody})
+       .then(response => {
+
+		  $('.startContainer').fadeOut();
+		  $('#spin').fadeOut();
+		  $('.arrow').fadeOut();
+		  $('.container').fadeOut();
+		  $('.succesCircle').fadeIn();
+		  $('#msform').fadeOut(1000);
+
+          submitButton.disabled = false
+
+         })
+       .catch(error => {
+       alert('Bitte alle Felder ausfüllen', error.message)
+         submitButton.disabled = false
+
+       }
+       )
+   })
+
 
 
 function successAnim() {
@@ -92,7 +121,7 @@ $(".next").click(function(){
 
 		checkBack = false;
 		currentDegree = currentDegree + 3600 ;
-		fieldsetAnimDuration = 7000;
+		fieldsetAnimDuration = 2000;
 		successAnim();
 
 	}  else if(checkConFive == true) {
@@ -295,13 +324,4 @@ $(".previous").click(function(){
 });
 
 
-$(".submit").click(function(){
 
-$('.startContainer').fadeOut();
-$('#spin').fadeOut();
-$('.arrow').fadeOut();
-$('.container').fadeOut();
-$('.succesCircle').fadeIn();
-
-
-})
