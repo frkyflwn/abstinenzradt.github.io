@@ -224,7 +224,7 @@ $(".next").click(function(){
 
 					checkBack = false;
 					checkRotation = true;
-					fieldsetAnimDuration = 2000;
+					fieldsetAnimDuration = 7000;
 		
 				}  else if(checkConFive == true) {
 
