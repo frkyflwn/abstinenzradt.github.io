@@ -146,6 +146,7 @@ h1 {
   margin-right: auto;
   left: 0;
   right: 0;
+  cursor: pointer;
 }
 
 .startButtonThumb {

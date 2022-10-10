@@ -146,7 +146,7 @@ $(".next").click(function(){
 		  $('.validationComment').show();
 		  animating = false;
 		  
-    } else if( (alcInput.value.toString().length > 4 || alcInput.value < 0.1 || alcInput.value > 10 || alcInput.value === "") && checkTrigger == "alcTrigger") {
+    } else if( (alcInput.value.toString().length > 4 || alcInput.value < 0.01 || alcInput.value > 10 || alcInput.value === "") && checkTrigger == "alcTrigger") {
           
 		  console.log("Bitte korrekt ausfüllen");
 		  $('.validationComment').show();
