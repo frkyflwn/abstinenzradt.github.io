@@ -6,9 +6,7 @@
 
 html {
 	height: 100%;
-
 }
-
 
 body {
 	font-family: sans-serif;
@@ -195,13 +193,10 @@ display:none;
   50% {
     opacity: 1;
   }
-  
   100% {
     opacity: 1;
 	transform: scale(0.17);
-	border: none;
-
-    
+	border: none; 
   } 
 }
 
@@ -252,11 +247,6 @@ display:none;
 }
 
 
-.container .one:active, .container .two:active, .container .three:active, .container .four:active, .container .five:active {
-	background-color: #f9e501;
-}
-
-
 .container .one{
 	background-color: #272929;
 	left:50%;
@@ -280,20 +270,15 @@ display:none;
 
 .arrow{
 	position: absolute;
-
 	left: 50%;
 	transform: translateX(-50%);
 	color: #272929;
 	z-index: 100;
-	top: -32px;
+	top: -20px;
 	display: none;
-	
+	height: 30px;
 }
 
-.arrow::before{
-	content:"\1F817";
-	font-size:50px;
-}
 
 .dayimg, .ageimg, .timeimg, .alcimg, .verstossimg {
 		display: none;
@@ -302,9 +287,6 @@ display:none;
 
 #spin{
 	position: absolute;
-
-	
-
 	z-index: 1;
 	background-color: #e2e2e2;
 	text-transform: uppercase;
@@ -537,7 +519,5 @@ h1 {
  
   } 
 }
-
-
 
 }
