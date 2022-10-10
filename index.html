@@ -48,11 +48,11 @@
 	
 
 	   <div class="container">
-		 <div class="one"><img class="ageimg" src="icons/age.png"><br>Alter</div>
-		 <div class="two"><img class="dayimg" src="icons/day.png"><br>Wochentag</div>
-		 <div class="three"><img class="timeimg" src="icons/time.png"><br>Uhrzeit</div>
-		 <div class="four"><img class="alcimg" src="icons/alc.png"><br>Promille</div>
-		 <div class="five"><img class="verstossimg" src="icons/verstoss.png"><br>Verstosse</div>
+		 <div class="one"><span>Alter</span><br><img class="ageimg" src="icons/age.png"></div>
+		 <div class="two"><span>Wochentag</span><br><img class="dayimg" src="icons/day.png"></div>
+		 <div class="three"><span>Uhrzeit</span><br><img class="timeimg" src="icons/time.png"></div>
+		 <div class="four"><span>Promille</span><br><img class="alcimg" src="icons/alc.png"></div>
+		 <div class="five"><span>Verstosse</span><br><img class="verstossimg" src="icons/verstoss.png"></div>
 	   </div>
 
 </div>
@@ -73,7 +73,8 @@
 	</ul>
 	
 	<!-- fieldsets -->
-		<fieldset>
+	<div class="fieldsets">
+		<fieldset class="welcomeTrigger">
 		<h2 class="fs-title">Willkommen!</h2>
 		<h3 class="fs-subtitle">Drücke jetzt auf "Weiter" und beantwortete folgende Fragen um dein Ergebnis zu erfahren</h3>
 		
@@ -81,17 +82,18 @@
 	</fieldset>
 
 
-	<fieldset>
+	<fieldset class="ageTrigger">
 		<h2 class="fs-title">Alter</h2>
 		<h3 class="fs-subtitle">Wie alt warst du, als es zum Vorfall kam?</h3>
-		<input type="number" name="age" min="18" max="99" placeholder="Alter" required>
+		<span class="validationComment">Bitte gültigen Wert eingeben</span>
+		<input class="ageInput" type="number" name="age" min="16" max="99" placeholder="Alter" required>
 <input type="button" name="next" class="next action-button" value="Weiter" />
 	</fieldset>
 
-	<fieldset>
+	<fieldset class="dayTrigger">
 		<h2 class="fs-title">Wochentag</h2>
 		<h3 class="fs-subtitle">An welchem Wochentag kam es zum Vorfall?</h3>
-		<select name="dayField" placeholder="Wochentag" required>
+		<select class="dayInput" name="dayField" placeholder="Wochentag" required>
   <option value="mo">Montag</option>
   <option value="di">Dienstag</option>
   <option value="mi">Mittwoch</option>
@@ -106,19 +108,21 @@
 		<input type="button" name="next" class="next action-button" value="Weiter" />
 	</fieldset>
 
-<fieldset>
+<fieldset class="timeTrigger">
 		<h2 class="fs-title">Uhrzeit</h2>
 		<h3 class="fs-subtitle">Um welche Uhrzeit kam es zum Vorfall?</h3>
-		<input type="time" name="time" required>
+		<span class="validationComment">Bitte gültigen Wert eingeben</span>
+		<input class="timeInput" type="time" name="time" required>
   </br>
 		<input type="button" name="previous" class="previous action-button" value="Zurück" />
 		<input type="button" name="next" class="next action-button" value="Weiter" />
 	</fieldset>
 
-<fieldset>
+<fieldset class="alcTrigger">
 		<h2 class="fs-title">Alkoholspiegel</h2>
 		<h3 class="fs-subtitle">Wieviel Promille hattest du, als es zum Vorfall kam?</h3>
-		<input type="number" pattern="[0-9]+([\,|\.][0-9]+)?" name="alcField" step="0.01" id="with-step" placeholder="0.00" min="0.00" max="9.99" required/>
+		<span class="validationComment">Bitte gültigen Wert eingeben</span>
+		<input class="alcInput" type="number" pattern="[0-9]+([\,|\.][0-9]+)?" name="alcField" step="0.01" id="with-step" placeholder="0.00" min="0.00" max="9.99" required/>
   </br>
 		<input type="button" name="previous" class="previous action-button" value="Zurück" />
 		<input type="button" name="next" class="next action-button" value="Weiter" />
@@ -127,7 +131,8 @@
 <fieldset class="triggerClass">
 		<h2 class="fs-title">Häufigkeit von Verstossen</h2>
 		<h3 class="fs-subtitle">Wie oft kam es in der Vergangenheit zu Alkoholverstossen?</h3>
-		<input type="number" name="quantityverstosse" min="1" max="99" placeholder="1" required>
+		<span class="validationComment">Bitte gültigen Wert eingeben</span>
+		<input class="verstosseInput" type="number" name="quantityverstosse" min="1" max="99" placeholder="1" required>
   </br>
 		<input type="button" name="previous" class="previous action-button" value="Zurück" />
 		<input type="button" name="next" class="next action-button" value="Weiter" />
@@ -135,7 +140,7 @@
 
 
 
-	<fieldset>
+	<fieldset class="triggerClass2">
 		<h2 class="fs-title">Fast geschafft!</h2>
 		<h3 class="fs-subtitle">Trage jetzt noch deinen Namen ein und vereinbare im Anschluss dein kostenloses Erstgespräch um dein Ergebnis zu erfahren</h3>
 		<input type="text" name="surname" placeholder="Vorname" class="name" required />
@@ -143,6 +148,8 @@
 		<input type="button" name="previous" class="previous action-button" value="Zurück" />
 		<input type="submit" name="submit" class="submit action-button" value="Abschicken"/>
 	</fieldset>
+
+	</div>
 
 </form>
 <br><br>

@@ -13,11 +13,17 @@ const conTwo = document.querySelector('.two');
 const conThree = document.querySelector('.three');
 const conFour = document.querySelector('.four');
 const conFive = document.querySelector('.five');
+var checkTrigger;
 var checkConFive = new Boolean(false);
 var checkBack = new Boolean(false);
+var checkRotation = new Boolean(false);
 let checkCounter = 0;
-
 var fieldsetAnimDuration = 0;
+
+var ageInput;
+var att;
+
+var current_fs = $('fieldset').first();
 
 let currentDegree = 72;
 let degNew = 72;
@@ -77,71 +83,172 @@ $(".startButton").fadeOut(1000);
 $("#msform").fadeIn(2000);
 $(".arrow").fadeIn(2000);
 /* delay(1900).then(() => { $(startContainer).hide(); }); */
-
+ window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth'})
 
 
 
 });
 
 
+$(".startButtonLogo").click(function(){
+	
+	checkTrigger2 = $(current_fs).attr('class'); 
+
+	if ( checkTrigger2 == "triggerClass2") {
+
+		$(".submit").click();
+
+	} else {
+		$(".next").click();
+	}
+
+})
+
+/* function checkInputValidity() {
+	 ageInput = .val();
+	 console.log(ageInput);
+  if(ageInput == "") {
+	  alert('no input');
+  }
+} */
+
+
+
 $(".next").click(function(){
 	if(animating) return false;
 	animating = true;
+
+	var checkTrigger = $(current_fs).attr('class');
 	
-	current_fs = $(this).parent();
+/*	current_fs = $(this).parent();
 	next_fs = $(this).parent().next();
-	checkTrigger = $(this).parent().attr('class');
+	checkTrigger = $(this).parent().attr('class'); */
 
-	if ( checkTrigger == "triggerClass") {
-
-		console.log(checkTrigger);
-		checkConFive = true;
-	}
+	var ageInput = document.querySelector('.ageInput');
+	var dayInput = document.querySelector('.dayInput');
+	var timeInput = document.querySelector('.timeInput');
+	var alcInput = document.querySelector('.alcInput');
+	var verstosseInput = document.querySelector('.verstosseInput');
+		 console.log(ageInput.value);
+		 console.log(dayInput.value);
+		 console.log(timeInput.value);
+		 console.log(alcInput.value);
+		 console.log(verstosseInput.value);
 
 	
- 
 
-	
-	
-	
-	
-	//activate next step on progressbar using the index of next_fs
-	$("#progressbar li").eq($("fieldset").index(current_fs)).addClass("active");
-	
-	//show the next fieldset
-	next_fs.show(); 
+	// Check input validity methode
+
+	     
 
 
+		if ( checkTrigger == "triggerClass") {
 
-	if(checkBack == true && checkCounter < 0) {
+			console.log(checkTrigger);
+			checkConFive = true;
+		}
 
-			checkCounter = checkCounter + 1;
+
+	/*	if(checkBack == true && checkCounter < 0) {
+
+				checkCounter = checkCounter + 1;
+				fieldsetAnimDuration = 800;
+		} else if(checkCounter == 0 && checkConFive == false) {
+
+			checkBack = false;
+			checkRotation = true;
+			fieldsetAnimDuration = 2000;
+		
+		}  else if(checkConFive == true) {
+
 			fieldsetAnimDuration = 800;
-	 } else if(checkCounter == 0 && checkConFive == false) {
+		} 
+	
+		*/
 
-		checkBack = false;
-		currentDegree = currentDegree + 3600 ;
-		fieldsetAnimDuration = 2000;
-		successAnim();
+	if( (ageInput.value > 99 || ageInput.value < 16 || isNaN(ageInput.value) || ageInput.value === "") && checkTrigger == "ageTrigger") {
+          
+		  console.log("Bitte korrekt ausfüllen");
+		  $('.validationComment').show();
+		  animating = false;
+		  
+    } else if(timeInput.value === "" && checkTrigger == "timeTrigger") {
+          
+		  console.log("Bitte korrekt ausfüllen");
+		  $('.validationComment').show();
+		  animating = false;
+		  
+    } else if( (alcInput.value < 0.1 || alcInput.value > 10 || alcInput.value === "") && checkTrigger == "alcTrigger") {
+          
+		  console.log("Bitte korrekt ausfüllen");
+		  $('.validationComment').show();
+		  animating = false;
+		  
+    } else if( (verstosseInput.value > 99 || verstosseInput.value < 1 || verstosseInput.value === "") && checkTrigger == "triggerClass") {
+          
+		  console.log("Bitte korrekt ausfüllen");
+		  $('.validationComment').show();
+		  animating = false;
+		  
+    } else if ( currentDegree == 17712 ) {
 
-	}  else if(checkConFive == true) {
-
-		fieldsetAnimDuration = 800;
-
-	} 
-
-
-
-
-	if ( currentDegree == 17712 ) {
-
+		$('.validationComment').hide();
 	   console.log("hier solls nichts weitergehen"); 
+
+	   			if(checkBack == true && checkCounter < 0) {
+
+						checkCounter = checkCounter + 1;
+						fieldsetAnimDuration = 800;
+				} else if(checkCounter == 0 && checkConFive == false) {
+
+					checkBack = false;
+					checkRotation = true;
+					fieldsetAnimDuration = 2000;
+		
+				}  else if(checkConFive == true) {
+
+					fieldsetAnimDuration = 800;
+				} 
+
+	   animateFieldset();
 
 	 } else {
 
-	 		currentDegree = currentDegree - degNew ;
+		$('.validationComment').hide();
+
+	 			if(checkBack == true && checkCounter < 0) {
+
+						checkCounter = checkCounter + 1;
+						fieldsetAnimDuration = 800;
+				} else if(checkCounter == 0 && checkConFive == false) {
+
+					checkBack = false;
+					checkRotation = true;
+					fieldsetAnimDuration = 2000;
 		
-		wheel.style.transform = 'rotate('+currentDegree+'deg)';
+				}  else if(checkConFive == true) {
+
+					fieldsetAnimDuration = 800;
+				} 
+
+	 if ( checkRotation == true && checkCounter == 0) {
+		 currentDegree = currentDegree + 3600 ;
+		 successAnim();
+		 checkRotation = false;
+		 currentDegree = currentDegree - degNew ;
+		
+		 wheel.style.transform = 'rotate('+currentDegree+'deg)';
+
+		 animateFieldset();
+
+	 } else {
+
+	 	 currentDegree = currentDegree - degNew ;
+		
+		 wheel.style.transform = 'rotate('+currentDegree+'deg)';
+
+		 animateFieldset();
+		}
 
 	 }
 
@@ -204,10 +311,21 @@ $(".next").click(function(){
 
 	} 
 	
+
+	function animateFieldset() {
+
+	next_fs = $(current_fs).next(); 
+
+
+	//activate next step on progressbar using the index of next_fs
+	$("#progressbar li").eq($("fieldset").index(current_fs)).addClass("active");
+	
+	//show the next fieldset
+	next_fs.show(); 
 	
 
 	//hide the current fieldset with style
-	current_fs.animate({opacity: 0}, {
+	$(current_fs).animate({opacity: 0}, {
 		step: function(now, mx) {
 			//as the opacity of current_fs reduces to 0 - stored in "now"
 
@@ -228,7 +346,9 @@ $(".next").click(function(){
 		}, 
 		duration: fieldsetAnimDuration, 
 		complete: function(){
+			
 			current_fs.hide();
+			current_fs = next_fs;
 			animating = false;
 		}, 
 		//this comes from the custom easing plugin
@@ -236,7 +356,7 @@ $(".next").click(function(){
 		
 	});
 
-	
+	}
 
 	console.log(currentDegree);
 	
@@ -246,8 +366,8 @@ $(".previous").click(function(){
 	if(animating) return false;
 	animating = true;
 	
-	current_fs = $(this).parent();
-	previous_fs = $(this).parent().prev();
+	
+	previous_fs = current_fs.prev();
 
 	if (checkCounter <= 0) {
 
@@ -312,6 +432,7 @@ $(".previous").click(function(){
 		duration: 800, 
 		complete: function(){
 			current_fs.hide();
+			current_fs = previous_fs;
 			animating = false;
 		}, 
 		//this comes from the custom easing plugin

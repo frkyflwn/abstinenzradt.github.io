@@ -17,6 +17,7 @@ body {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-color: #e9c823;
+	overflow-x: hidden;
 }
 
 h1 {
@@ -64,6 +65,10 @@ h1 {
   display: none;
 }
 
+.container span {
+  position: relative;
+  top: 10px;
+}
 
 .checkmark {
     width: 100px;
@@ -216,9 +221,8 @@ display:none;
 
 .container img {
 	height: 60px;
-	top: 10px;
-	margin-bottom: 15px;
     position: relative;
+	top: 20px;
 }
 
 .container div{
@@ -238,6 +242,13 @@ display:none;
 	color: #272929;
 	left:100px;
 	text-transform: uppercase;
+}
+
+.validationComment {
+  color: red;
+  top: -10px;
+  position: relative;
+  display: none;
 }
 
 
@@ -463,7 +474,7 @@ h1 {
 
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 500px) {
 
 .container {
   width: 300px;
